@@ -1,15 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-    }
-  }
-}
-
-provider "aws" {
-  region  = "us-west-2"
-}
-
 data "aws_ami" "app_ami" {
   most_recent = true
 
@@ -54,7 +42,7 @@ module "my_ec2_instance" {
   key_name               = "user1"
   monitoring             = true
   vpc_security_group_ids = module.my_vpc.vpc_id
-  subnet_id              = module.my_vpc.public_subnets
+  subnet_id              = "${module.my_vpc.public_subnets}"
 
   tags = {
     Terraform   = "true"
