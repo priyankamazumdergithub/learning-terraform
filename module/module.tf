@@ -39,7 +39,7 @@ module "my_ec2_instance" {
 
   ami                    = data.aws_ami.app_ami.id
   instance_type          = "t2.micro"
-  key_name               = "user1"
+  #key_name               = "user1"
   monitoring             = true
   #vpc_security_group_ids = [module.my_sg.id]
   subnet_id              = "${element(module.my_vpc.public_subnets, 0)}"
