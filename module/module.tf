@@ -42,7 +42,7 @@ module "my_ec2_instance" {
   key_name               = "user1"
   monitoring             = true
   vpc_security_group_ids = module.my_vpc.vpc_id
-  subnet_id              = "${module.my_vpc.public_subnets}"
+  subnet_id              = "${element(module.my_vpc.private_subnets, 0)}"
 
   tags = {
     Terraform   = "true"
