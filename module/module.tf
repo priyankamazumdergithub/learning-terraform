@@ -41,7 +41,7 @@ module "my_ec2_instance" {
   instance_type          = "t2.micro"
   key_name               = "user1"
   monitoring             = true
-  vpc_security_group_ids = module.my_vpc.vpc_id
+  vpc_security_group_ids = module.my_sg.vpc_security_group_ids
   subnet_id              = "${element(module.my_vpc.public_subnets, 0)}"
 
   tags = {
